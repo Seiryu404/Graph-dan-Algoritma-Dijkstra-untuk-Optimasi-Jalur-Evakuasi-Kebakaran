@@ -1,0 +1,197 @@
+================================================================================
+TEST OTOMATIS - SISTEM EVAKUASI KEBAKARAN
+================================================================================
+
+
+======================================================================
+LOADING GRAPH
+======================================================================
+Loading nodes dari CSV...
+✓ Berhasil load 25 node
+Loading edges dari CSV...
+✓ Berhasil load 42 edge
+✓ Graph berhasil di-load!
+
+Statistik Graph:
+  - Total Node: 25
+  - Total Edge: 21
+  - Titik Evakuasi: 3 (T, U, V)
+
+Kategori Node:
+  - Jalan Utama: 5
+  - Persimpangan: 13
+  - Fasilitas Umum: 4
+  - Titik Evakuasi: 3
+
+================================================================================
+TEST 1: 5 SKENARIO NORMAL (JALUR TERSEDIA)
+================================================================================
+
+--- SKENARIO NORMAL 1 ---
+Dari: C → Ke: T
+✓ Lokasi awal: C - Persimpangan Gang 1 (Persimpangan)
+✓ Titik Evakuasi: T - Lapangan Utama Simolawang (Titik Evakuasi)
+✓ HASIL: Rute ditemukan
+  Jalur: C → K → M → N → T
+  Jarak: 400 Meter
+
+--- SKENARIO NORMAL 2 ---
+Dari: G → Ke: U
+✓ Lokasi awal: G - Persimpangan Gang 4 (Persimpangan)
+✓ Titik Evakuasi: U - Lapangan Parkir Jalan Kenjeran (Titik Evakuasi)
+✓ HASIL: Rute ditemukan
+  Jalur: G → A → B → U
+  Jarak: 305 Meter
+
+--- SKENARIO NORMAL 3 ---
+Dari: M → Ke: T
+✓ Lokasi awal: M - Persimpangan Gang 8 (Persimpangan)
+✓ Titik Evakuasi: T - Lapangan Utama Simolawang (Titik Evakuasi)
+✓ HASIL: Rute ditemukan
+  Jalur: M → N → T
+  Jarak: 205 Meter
+
+--- SKENARIO NORMAL 4 ---
+Dari: E → Ke: V
+✓ Lokasi awal: E - Persimpangan Gang 3 (Persimpangan)
+✓ Titik Evakuasi: V - Sekolah Dasar Negeri 1 (Titik Evakuasi)
+✓ HASIL: Rute ditemukan
+  Jalur: E → D → C → K → V
+  Jarak: 365 Meter
+
+--- SKENARIO NORMAL 5 ---
+Dari: H → Ke: T
+✓ Lokasi awal: H - Persimpangan Gang 5 (Persimpangan)
+✓ Titik Evakuasi: T - Lapangan Utama Simolawang (Titik Evakuasi)
+✓ HASIL: Rute ditemukan
+  Jalur: H → I → O → T
+  Jarak: 265 Meter
+
+====================================================================================================
+RINGKASAN 5 SKENARIO NORMAL
+====================================================================================================
+No   Start    Target   Status       Jarak Awal   Jarak Akhir 
+----------------------------------------------------------------------------------------------------
+1    C        T        BERHASIL     400          400         
+2    G        U        BERHASIL     305          305         
+3    M        T        BERHASIL     205          205         
+4    E        V        BERHASIL     365          365         
+5    H        T        BERHASIL     265          265         
+----------------------------------------------------------------------------------------------------
+
+
+================================================================================
+TEST 2: 5 SKENARIO JALUR TERTUTUP (SIMULASI KEBAKARAN)
+================================================================================
+
+--- SKENARIO TERTUTUP 1 ---
+Dari: C → Ke: T
+Situasi: Jalur C→D tertutup
+✓ Lokasi awal: C - Persimpangan Gang 1 (Persimpangan)
+✓ Titik Evakuasi: T - Lapangan Utama Simolawang (Titik Evakuasi)
+
+Rute Awal (sebelum kebakaran):
+  C → K → M → N → T (400 m)
+
+Jalur Tertutup:
+  ✗ C → D
+
+Rute Alternatif (sesudah kebakaran):
+  C → K → M → N → T (400 m)
+  Perubahan jarak: +0 m
+  ✓ Status: BERHASIL
+
+--- SKENARIO TERTUTUP 2 ---
+Dari: G → Ke: U
+Situasi: Jalur G→H tertutup
+✓ Lokasi awal: G - Persimpangan Gang 4 (Persimpangan)
+✓ Titik Evakuasi: U - Lapangan Parkir Jalan Kenjeran (Titik Evakuasi)
+
+Rute Awal (sebelum kebakaran):
+  G → A → B → U (305 m)
+
+Jalur Tertutup:
+  ✗ G → H
+
+Rute Alternatif (sesudah kebakaran):
+  G → A → B → U (305 m)
+  Perubahan jarak: +0 m
+  ✓ Status: BERHASIL
+
+--- SKENARIO TERTUTUP 3 ---
+Dari: M → Ke: T
+Situasi: Jalur M→N tertutup
+✓ Lokasi awal: M - Persimpangan Gang 8 (Persimpangan)
+✓ Titik Evakuasi: T - Lapangan Utama Simolawang (Titik Evakuasi)
+
+Rute Awal (sebelum kebakaran):
+  M → N → T (205 m)
+
+Jalur Tertutup:
+  ✗ M → N
+
+Rute Alternatif (sesudah kebakaran):
+  M → P → T (215 m)
+  Perubahan jarak: +10 m
+  ✓ Status: BERHASIL
+
+--- SKENARIO TERTUTUP 4 ---
+Dari: E → Ke: V
+Situasi: Jalur D→E tertutup
+✓ Lokasi awal: E - Persimpangan Gang 3 (Persimpangan)
+✓ Titik Evakuasi: V - Sekolah Dasar Negeri 1 (Titik Evakuasi)
+
+Rute Awal (sebelum kebakaran):
+  E → D → C → K → V (365 m)
+
+Jalur Tertutup:
+  ✗ D → E
+
+Rute Alternatif (sesudah kebakaran):
+  E → D → C → K → V (365 m)
+  Perubahan jarak: +0 m
+  ✓ Status: BERHASIL
+
+--- SKENARIO TERTUTUP 5 ---
+Dari: H → Ke: T
+Situasi: Jalur H→I tertutup
+✓ Lokasi awal: H - Persimpangan Gang 5 (Persimpangan)
+✓ Titik Evakuasi: T - Lapangan Utama Simolawang (Titik Evakuasi)
+
+Rute Awal (sebelum kebakaran):
+  H → I → O → T (265 m)
+
+Jalur Tertutup:
+  ✗ H → I
+
+Rute Alternatif (sesudah kebakaran):
+  H → R → M → N → T (410 m)
+  Perubahan jarak: +145 m
+  ✓ Status: BERHASIL
+
+====================================================================================================
+RINGKASAN 5 SKENARIO JALUR TERTUTUP
+====================================================================================================
+No   Start    Target   Status       Jarak Awal   Jarak Akhir 
+----------------------------------------------------------------------------------------------------
+1    C        T        BERHASIL     400          400         
+2    G        U        BERHASIL     305          305         
+3    M        T        BERHASIL     205          215         
+4    E        V        BERHASIL     365          365         
+5    H        T        BERHASIL     265          410         
+----------------------------------------------------------------------------------------------------
+
+
+================================================================================
+SUMMARY KESELURUHAN
+================================================================================
+
+Skenario Normal: 5/5 BERHASIL (100%)
+Skenario Tertutup: 5/5 BERHASIL (100%)
+TOTAL: 10/10 BERHASIL (100%)
+
+✓ SEMUA TEST BERHASIL! Program siap digunakan.
+
+================================================================================
+Test selesai. Hasil disimpan ke: test/test_results.txt
+================================================================================
