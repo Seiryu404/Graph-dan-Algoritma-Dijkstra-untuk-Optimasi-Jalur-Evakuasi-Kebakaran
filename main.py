@@ -79,7 +79,7 @@ def main():
         print("2. Jalankan 5 Skenario Normal")
         print("3. Jalankan 5 Skenario Jalur Tertutup")
         print("4. Tampilkan Informasi Graph")
-        print("5. DEMO: Operasi DELETE (INSERT/DELETE/TRAVERSAL)")
+        print("5. ⭐ DEMO: 3 OPERASI WAJIB (INSERT/DELETE/TRAVERSAL)")
         print("6. Keluar")
         print("="*70)
         
@@ -254,44 +254,44 @@ def demonstrate_delete_operations(system: EvacuationSystem) -> None:
     3. TRAVERSAL Operation (Akses/cari data)
     """
     print("\n" + "="*70)
-    print("DEMONSTRASI OPERASI DATA - CRUD OPERATIONS")
+    print("⭐ DEMONSTRASI: 3 OPERASI DATA STRUKTUR WAJIB (CRUD) ⭐")
     print("="*70)
-    print("\nMenampilkan 3 operasi yang diwajibkan:")
-    print("  1️⃣  INSERT - Menambahkan data (add_node, add_edge)")
-    print("  2️⃣  DELETE - Menghapus data (remove_node, remove_edge)")
-    print("  3️⃣  TRAVERSAL - Akses/Cari data (get_neighbors, display)")
+    print("\nMenampilkan 3 operasi yang diwajibkan dalam struktur data:")
+    print("  ✏️  INSERT  - Menambahkan data baru ke graph")
+    print("  🗑️  DELETE  - Menghapus data permanen dari graph")
+    print("  🔍 SEARCH  - Mengakses & mencari data dalam graph")
+    print("\nOperasi ini disertai dengan demonstrasi praktikal yang interaktif.")
     
     while True:
         print("\n" + "="*70)
-        print("MENU DEMONSTRASI DELETE OPERATIONS")
+        print("MENU DEMONSTRASI CRUD OPERATIONS")
         print("="*70)
-        print("\n📝 OPERASI YANG AKAN KAMI DEMONSTRASIKAN:")
-        print("\n1️⃣  OPERASI INSERT (CREATE)")
-        print("   - Membuat node baru")
-        print("   - Menambahkan edge baru")
-        print("\n2️⃣  OPERASI DELETE (REMOVE)")
-        print("   - Menghapus edge secara permanen")
-        print("   - Menghapus node beserta semua edges-nya")
-        print("   - BEDA: close_edge (marking) vs remove_edge (hapus selamanya)")
-        print("\n3️⃣  OPERASI TRAVERSAL (READ)")
-        print("   - Menampilkan semua nodes")
-        print("   - Menampilkan semua edges")
-        print("   - Mencari neighbors dari node tertentu")
+        
+        print("\n┌─ ✏️  OPERASI INSERT (CREATE) ─────────────────────────────┐")
+        print("│ Menambahkan data baru ke dalam graph                      │")
+        print("│ 1. Demo: INSERT Node (Membuat Node Baru)                  │")
+        print("│ 2. Demo: INSERT Edge (Membuat Koneksi Baru)               │")
+        print("└────────────────────────────────────────────────────────────┘")
+        
+        print("\n┌─ 🔍 OPERASI TRAVERSAL (READ/SEARCH) ───────────────────┐")
+        print("│ Mengakses dan mencari data dalam graph                    │")
+        print("│ 3. Demo: TRAVERSAL - Lihat Semua Node                     │")
+        print("│ 4. Demo: TRAVERSAL - Lihat Semua Edge                     │")
+        print("│ 7. Demo: TRAVERSAL - Cari Neighbors dari Node Tertentu    │")
+        print("└────────────────────────────────────────────────────────────┘")
+        
+        print("\n┌─ 🗑️  OPERASI DELETE (REMOVE) ─────────────────────────────┐")
+        print("│ Menghapus data permanen dari graph                        │")
+        print("│ 5. Demo: DELETE Edge (Hapus Koneksi Secara Permanen)      │")
+        print("│ 6. Demo: DELETE Node (Hapus Node + Semua Koneksinya)      │")
+        print("│ 8. Demo: Perbedaan close_edge vs remove_edge              │")
+        print("└────────────────────────────────────────────────────────────┘")
         
         print("\n" + "-"*70)
-        print("Pilih Demonstrasi:")
-        print("-"*70)
-        print("1. Demo: INSERT Node (Membuat Node Baru)")
-        print("2. Demo: INSERT Edge (Membuat Koneksi Baru)")
-        print("3. Demo: TRAVERSAL - Lihat Semua Node")
-        print("4. Demo: TRAVERSAL - Lihat Semua Edge")
-        print("5. Demo: DELETE Edge (Hapus Koneksi Secara Permanen)")
-        print("6. Demo: DELETE Node (Hapus Node + Semua Koneksinya)")
-        print("7. Demo: Perbedaan close_edge vs remove_edge")
-        print("8. Kembali ke Menu Utama")
+        print("9. Kembali ke Menu Utama")
         print("="*70)
         
-        choice = input("\nPilih demonstrasi (1-8): ").strip()
+        choice = input("\nPilih demonstrasi (1-9): ").strip()
         
         if choice == "1":
             demo_insert_node(system)
@@ -306,8 +306,10 @@ def demonstrate_delete_operations(system: EvacuationSystem) -> None:
         elif choice == "6":
             demo_delete_node(system)
         elif choice == "7":
-            demo_close_vs_remove(system)
+            demo_traversal_neighbors(system)
         elif choice == "8":
+            demo_close_vs_remove(system)
+        elif choice == "9":
             break
         else:
             print("✗ Input tidak valid!")
@@ -318,27 +320,38 @@ def demo_insert_node(system: EvacuationSystem) -> None:
     from graph import Node
     
     print("\n" + "="*70)
-    print("DEMO 1️⃣  OPERASI INSERT - MENAMBAHKAN NODE BARU")
+    print("DEMO 1️⃣  OPERASI INSERT (CREATE) - MENAMBAHKAN NODE BARU")
     print("="*70)
     
-    print("\n📌 Sebelum menambah node:")
+    print("\n📊 STATUS GRAPH SEBELUM INSERT:")
     print(f"   Total nodes: {system.graph.total_nodes}")
+    print(f"   Daftar node: {sorted(system.graph.nodes.keys())}")
     
     # Buat node baru
     new_node_id = "Z"
     new_node = Node(new_node_id, "Titik Evakuasi Baru", "Titik Evakuasi")
     
-    print(f"\n📝 Membuat node baru: {new_node.get_info()}")
-    print(f"   Code: graph.add_node(node)")
+    print(f"\n📝 MEMBUAT NODE BARU:")
+    print(f"   from graph import Node")
+    print(f"   new_node = Node('{new_node_id}', 'Titik Evakuasi Baru', 'Titik Evakuasi')")
+    print(f"   graph.add_node(new_node)")
+    print(f"\n   Detail node baru:")
+    print(f"   - ID: {new_node.id}")
+    print(f"   - Nama: {new_node.nama}")
+    print(f"   - Kategori: {new_node.kategori}")
     
     # Tambahkan node
     system.graph.add_node(new_node)
     
-    print(f"\n✅ Node berhasil ditambahkan!")
-    print(f"   Total nodes sekarang: {system.graph.total_nodes}")
-    print(f"   Node '{new_node_id}' sudah ada di graph ✓")
+    print(f"\n✅ HASIL SETELAH INSERT:")
+    print(f"   Total nodes: {system.graph.total_nodes}")
+    print(f"   Daftar node: {sorted(system.graph.nodes.keys())}")
+    print(f"   ✓ Node '{new_node_id}' BERHASIL ditambahkan ke graph!")
+    print(f"\n   Catatan: Ini adalah OPERASI INSERT dalam struktur data.")
+    print(f"   Data baru telah ditambahkan ke dalam graph.")
     
     input("\nTekan Enter untuk lanjut...")
+
 
 
 def demo_insert_edge(system: EvacuationSystem) -> None:
@@ -346,16 +359,16 @@ def demo_insert_edge(system: EvacuationSystem) -> None:
     from graph import Edge
     
     print("\n" + "="*70)
-    print("DEMO 2️⃣  OPERASI INSERT - MENAMBAHKAN EDGE (KONEKSI) BARU")
+    print("DEMO 2️⃣  OPERASI INSERT (CREATE) - MENAMBAHKAN EDGE (KONEKSI) BARU")
     print("="*70)
     
-    print("\n📌 Sebelum menambah edge:")
+    print("\n📊 STATUS GRAPH SEBELUM INSERT:")
     print(f"   Total edges: {system.graph.total_edges}")
     
     # Tanyakan node untuk dihubungkan
-    print("\n📍 Tersedia node: A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z")
+    print("\n📍 Tersedia node: " + ", ".join(sorted(system.graph.nodes.keys())))
     
-    asal = input("Pilih node asal (contoh: A): ").strip().upper()
+    asal = input("\nPilih node asal (contoh: A): ").strip().upper()
     if asal not in system.graph.nodes:
         print(f"❌ Node '{asal}' tidak ditemukan!")
         return
@@ -375,14 +388,25 @@ def demo_insert_edge(system: EvacuationSystem) -> None:
     # Buat dan tambahkan edge
     new_edge = Edge(asal, tujuan, jarak)
     
-    print(f"\n📝 Membuat edge baru: {asal} ↔ {tujuan} ({jarak}m)")
-    print(f"   Code: graph.add_edge(edge)")
+    print(f"\n📝 MEMBUAT EDGE BARU:")
+    print(f"   from graph import Edge")
+    print(f"   new_edge = Edge('{asal}', '{tujuan}', {jarak})")
+    print(f"   graph.add_edge(new_edge)")
+    print(f"\n   Detail edge baru:")
+    print(f"   - Node asal: {asal}")
+    print(f"   - Node tujuan: {tujuan}")
+    print(f"   - Jarak: {jarak} meter")
+    print(f"   - Status: Aktif (is_active = True)")
+    print(f"   - Tipe: Undirected (bisa dilalui dua arah)")
     
     try:
         system.graph.add_edge(new_edge)
-        print(f"\n✅ Edge berhasil ditambahkan!")
-        print(f"   Total edges sekarang: {system.graph.total_edges}")
-        print(f"   Koneksi {asal} ↔ {tujuan} sudah aktif ✓")
+        print(f"\n✅ HASIL SETELAH INSERT:")
+        print(f"   Total edges: {system.graph.total_edges}")
+        print(f"   ✓ Edge berhasil ditambahkan ke graph!")
+        print(f"   ✓ Koneksi {asal} ↔ {tujuan} ({jarak}m) AKTIF")
+        print(f"\n   Catatan: Ini adalah OPERASI INSERT dalam struktur data.")
+        print(f"   Koneksi/relasi baru telah ditambahkan ke dalam graph.")
     except ValueError as e:
         print(f"❌ Error: {e}")
     
@@ -392,14 +416,22 @@ def demo_insert_edge(system: EvacuationSystem) -> None:
 def demo_traversal_nodes(system: EvacuationSystem) -> None:
     """Demo: TRAVERSAL - Menampilkan Semua Node"""
     print("\n" + "="*70)
-    print("DEMO 3️⃣  OPERASI TRAVERSAL - MENAMPILKAN SEMUA NODE")
+    print("DEMO 3️⃣  OPERASI TRAVERSAL (READ/SEARCH) - LIHAT SEMUA NODE")
     print("="*70)
     
-    print("\n📌 Mengakses dan menampilkan data graph:")
+    print("\n📌 Mengakses dan menampilkan semua data nodes:")
     print("   Code: graph.display_all_nodes()")
-    print("   Operasi: TRAVERSAL - Iterasi semua nodes dan tampilkan")
+    print("   Operasi: TRAVERSAL - Iterasi (loop) semua nodes dan tampilkan")
+    print("\n   Proses:")
+    print("   1. Akses dictionary nodes")
+    print("   2. Iterasi setiap node dalam dictionary")
+    print("   3. Tampilkan informasi node (ID, Nama, Kategori)")
     
+    print("\n✅ HASIL TRAVERSAL SEMUA NODE:\n")
     system.graph.display_all_nodes()
+    
+    print("   Catatan: Ini adalah OPERASI TRAVERSAL/SEARCH dalam struktur data.")
+    print("   Kami mengakses dan membaca SEMUA data yang tersimpan di graph.")
     
     input("Tekan Enter untuk lanjut...")
 
@@ -407,30 +439,84 @@ def demo_traversal_nodes(system: EvacuationSystem) -> None:
 def demo_traversal_edges(system: EvacuationSystem) -> None:
     """Demo: TRAVERSAL - Menampilkan Semua Edge"""
     print("\n" + "="*70)
-    print("DEMO 4️⃣  OPERASI TRAVERSAL - MENAMPILKAN SEMUA EDGE")
+    print("DEMO 4️⃣  OPERASI TRAVERSAL (READ/SEARCH) - LIHAT SEMUA EDGE")
     print("="*70)
     
-    print("\n📌 Mengakses dan menampilkan semua edges:")
+    print("\n📌 Mengakses dan menampilkan semua data edges:")
     print("   Code: graph.display_all_edges()")
-    print("   Operasi: TRAVERSAL - Iterasi semua edges dan tampilkan")
+    print("   Operasi: TRAVERSAL - Iterasi (loop) semua edges dan tampilkan")
+    print("\n   Proses:")
+    print("   1. Akses adjacency list")
+    print("   2. Iterasi setiap edge dalam adjacency list")
+    print("   3. Tampilkan informasi edge (Asal, Tujuan, Jarak, Status)")
     
+    print("\n✅ HASIL TRAVERSAL SEMUA EDGE:\n")
     system.graph.display_all_edges()
     
+    print("   Catatan: Ini adalah OPERASI TRAVERSAL/SEARCH dalam struktur data.")
+    print("   Kami mengakses dan membaca SEMUA relasi yang tersimpan di graph.")
+    
     input("Tekan Enter untuk lanjut...")
+
+
+def demo_traversal_neighbors(system: EvacuationSystem) -> None:
+    """Demo: TRAVERSAL - Mencari Neighbors dari Node Tertentu"""
+    print("\n" + "="*70)
+    print("DEMO 7️⃣  OPERASI TRAVERSAL - CARI NEIGHBORS NODE")
+    print("="*70)
+    
+    print("\n📌 Mencari dan menampilkan semua neighbors (tetangga) dari node:")
+    print("   Code: graph.get_neighbors(node_id)")
+    print("   Operasi: TRAVERSAL - Akses adjacency list dari node tertentu")
+    
+    # Tampilkan daftar node
+    print("\n📍 Daftar Node yang tersedia:")
+    node_list = sorted(system.graph.nodes.keys())
+    print(f"   {', '.join(node_list)}")
+    
+    # Tanyakan node yang dicari
+    node_id = input("\nMasukkan ID node untuk dicari neighbors-nya (contoh: C): ").strip().upper()
+    if node_id not in system.graph.nodes:
+        print(f"❌ Node '{node_id}' tidak ditemukan!")
+        return
+    
+    # Tampilkan info node
+    node = system.graph.get_node(node_id)
+    print(f"\n📝 Node yang dicari:")
+    print(f"   {node.get_info()}")
+    
+    # Ambil neighbors
+    neighbors = system.graph.get_neighbors(node_id)
+    
+    print(f"\n✅ NEIGHBORS (Tetangga) dari Node '{node_id}':")
+    print(f"   Total koneksi: {len(neighbors)}")
+    
+    if neighbors:
+        print(f"\n   {'Tujuan':<8} {'Jarak (m)':<12} {'Status':<15}")
+        print(f"   {'-'*35}")
+        for edge in neighbors:
+            status = "✓ AKTIF" if edge.is_active else "✗ TERTUTUP"
+            print(f"   {edge.tujuan:<8} {edge.jarak:<12} {status:<15}")
+    else:
+        print(f"   Tidak ada neighbors (node terisolasi)")
+    
+    input("\nTekan Enter untuk lanjut...")
 
 
 def demo_delete_edge(system: EvacuationSystem) -> None:
     """Demo: DELETE - Menghapus Edge Secara Permanen"""
     print("\n" + "="*70)
-    print("DEMO 5️⃣  OPERASI DELETE - MENGHAPUS EDGE SECARA PERMANEN")
+    print("DEMO 5️⃣  OPERASI DELETE (REMOVE) - HAPUS EDGE SECARA PERMANEN")
     print("="*70)
     
-    print("\n📌 Sebelum menghapus edge:")
+    print("\n📊 STATUS GRAPH SEBELUM DELETE:")
     print(f"   Total edges: {system.graph.total_edges}")
     
     # Tanyakan edge yang akan dihapus
     print("\n📍 Pilih edge yang akan dihapus:")
-    asal = input("Node asal (contoh: C): ").strip().upper()
+    print(f"   Daftar node: {', '.join(sorted(system.graph.nodes.keys()))}")
+    
+    asal = input("\nNode asal (contoh: C): ").strip().upper()
     if asal not in system.graph.nodes:
         print(f"❌ Node '{asal}' tidak ditemukan!")
         return
@@ -445,20 +531,33 @@ def demo_delete_edge(system: EvacuationSystem) -> None:
         print(f"❌ Tidak ada edge antara {asal} dan {tujuan}!")
         return
     
-    print(f"\n📝 Menghapus edge: {asal} ↔ {tujuan}")
+    # Tampilkan info edge sebelum dihapus
+    edge = next((e for e in system.graph.get_neighbors(asal) if e.tujuan == tujuan), None)
+    
+    print(f"\n📝 INFO EDGE SEBELUM DIHAPUS:")
+    print(f"   Asal: {asal}")
+    print(f"   Tujuan: {tujuan}")
+    if edge:
+        print(f"   Jarak: {edge.jarak} meter")
+        print(f"   Status: {'✓ Aktif' if edge.is_active else '✗ Tertutup'}")
+    
+    print(f"\n📝 MENGHAPUS EDGE:")
     print(f"   Code: graph.remove_edge('{asal}', '{tujuan}')")
-    print(f"   Catatan: Edge BENAR-BENAR DIHAPUS, bukan hanya ditutup!")
+    print(f"   Operasi: BENAR-BENAR MENGHAPUS edge (tidak hanya marking)")
+    print(f"   Catatan: Ini BEDA dengan close_edge() yang hanya marking!")
     
     # Hapus edge
     edges_before = system.graph.total_edges
     result = system.graph.remove_edge(asal, tujuan)
     
     if result:
-        print(f"\n✅ Edge berhasil dihapus!")
-        print(f"   Edges sebelum: {edges_before}")
-        print(f"   Edges sekarang: {system.graph.total_edges}")
+        print(f"\n✅ HASIL SETELAH DELETE:")
+        print(f"   Total edges: {edges_before} → {system.graph.total_edges}")
+        print(f"   ✓ Edge BERHASIL dihapus secara PERMANEN!")
         print(f"   Neighbors {asal} sekarang: {[e.tujuan for e in system.graph.get_neighbors(asal)]}")
         print(f"   Neighbors {tujuan} sekarang: {[e.tujuan for e in system.graph.get_neighbors(tujuan)]}")
+        print(f"\n   Catatan: Ini adalah OPERASI DELETE dalam struktur data.")
+        print(f"   Data edge sudah dihapus dan TIDAK BISA dipulihkan.")
     else:
         print(f"❌ Edge tidak ditemukan!")
     
@@ -468,17 +567,18 @@ def demo_delete_edge(system: EvacuationSystem) -> None:
 def demo_delete_node(system: EvacuationSystem) -> None:
     """Demo: DELETE - Menghapus Node Beserta Edges-nya"""
     print("\n" + "="*70)
-    print("DEMO 6️⃣  OPERASI DELETE - MENGHAPUS NODE + SEMUA KONEKSINYA")
+    print("DEMO 6️⃣  OPERASI DELETE (REMOVE) - HAPUS NODE + SEMUA KONEKSINYA")
     print("="*70)
     
-    print("\n📌 Sebelum menghapus node:")
+    print("\n📊 STATUS GRAPH SEBELUM DELETE:")
     print(f"   Total nodes: {system.graph.total_nodes}")
     print(f"   Total edges: {system.graph.total_edges}")
     
     # Tanyakan node yang akan dihapus
-    print("\n⚠️  Peringatan: Operasi ini akan menghapus node dan SEMUA edges-nya!")
-    print("    Pilih node yang tidak penting untuk demo (tidak untuk data utama).")
+    print("\n⚠️  PERINGATAN: Operasi ini akan menghapus node dan SEMUA edges-nya!")
+    print("    Pilih node yang tidak penting untuk demo (tidak gunakan data utama).")
     
+    print(f"\n📍 Daftar node: {', '.join(sorted(system.graph.nodes.keys()))}")
     node_id = input("\nMasukkan ID node untuk dihapus (contoh: Z): ").strip().upper()
     if node_id not in system.graph.nodes:
         print(f"❌ Node '{node_id}' tidak ditemukan!")
@@ -486,13 +586,21 @@ def demo_delete_node(system: EvacuationSystem) -> None:
     
     # Tampilkan info node sebelum dihapus
     neighbors_before = [e.tujuan for e in system.graph.get_neighbors(node_id)]
-    print(f"\n📝 Info node sebelum dihapus:")
-    print(f"   Node: {node_id}")
-    print(f"   Neighbors: {neighbors_before} (total: {len(neighbors_before)} koneksi)")
+    node = system.graph.get_node(node_id)
     
-    print(f"\n📝 Menghapus node: {node_id}")
+    print(f"\n📝 INFO NODE SEBELUM DIHAPUS:")
+    print(f"   {node.get_info()}")
+    print(f"   Neighbors: {neighbors_before}")
+    print(f"   Total koneksi: {len(neighbors_before)}")
+    
+    print(f"\n📝 MENGHAPUS NODE:")
     print(f"   Code: graph.remove_node('{node_id}')")
-    print(f"   Aksi: Hapus node + semua edges yang terhubung")
+    print(f"   Operasi: Hapus node + SEMUA edges yang terhubung")
+    print(f"   Proses:")
+    print(f"   1. Identifikasi semua edges yang connect ke node ini")
+    print(f"   2. Hapus node dari dictionary nodes")
+    print(f"   3. Hapus node dari adjacency list")
+    print(f"   4. Hapus semua edges dari nodes lain")
     
     # Hapus node
     nodes_before = system.graph.total_nodes
@@ -500,10 +608,13 @@ def demo_delete_node(system: EvacuationSystem) -> None:
     result = system.graph.remove_node(node_id)
     
     if result:
-        print(f"\n✅ Node berhasil dihapus!")
-        print(f"   Nodes sebelum: {nodes_before} → sekarang: {system.graph.total_nodes}")
-        print(f"   Edges sebelum: {edges_before} → sekarang: {system.graph.total_edges}")
-        print(f"   ✓ Node '{node_id}' dan semua koneksinya sudah dihapus")
+        print(f"\n✅ HASIL SETELAH DELETE:")
+        print(f"   Total nodes: {nodes_before} → {system.graph.total_nodes}")
+        print(f"   Total edges: {edges_before} → {system.graph.total_edges}")
+        print(f"   ✓ Node BERHASIL dihapus secara PERMANEN!")
+        print(f"   ✓ Semua koneksi ke node juga TERHAPUS!")
+        print(f"\n   Catatan: Ini adalah OPERASI DELETE dalam struktur data.")
+        print(f"   Node dan semua relasinya sudah dihapus dan TIDAK BISA dipulihkan.")
     else:
         print(f"❌ Node tidak ditemukan!")
     
@@ -513,67 +624,140 @@ def demo_delete_node(system: EvacuationSystem) -> None:
 def demo_close_vs_remove(system: EvacuationSystem) -> None:
     """Demo: Perbedaan close_edge (marking) vs remove_edge (delete)"""
     print("\n" + "="*70)
-    print("DEMO 7️⃣  PERBEDAAN: close_edge() vs remove_edge()")
+    print("DEMO 8️⃣  PERBEDAAN: close_edge() vs remove_edge()")
     print("="*70)
     
-    print("\n📌 OPERASI YANG BERBEDA:")
-    print("\n  1️⃣  close_edge(asal, tujuan):")
-    print("     - Menandai edge sebagai TIDAK AKTIF (is_active = False)")
-    print("     - Edge MASIH ADA di graph")
-    print("     - Total edges TIDAK BERUBAH")
-    print("     - Bisa dibuka kembali dengan open_edge()")
-    print("     - USE CASE: Simulasi kebakaran/jalur tertutup sementara")
+    print("\n📌 KONSEP PENTING - 2 OPERASI BERBEDA:")
+    print("\n┌─ close_edge(asal, tujuan) ────────────────────────────────┐")
+    print("│ • Menandai edge sebagai TIDAK AKTIF (is_active = False)   │")
+    print("│ • Edge MASIH TERSIMPAN di graph                           │")
+    print("│ • Total edges TIDAK BERUBAH                               │")
+    print("│ • Bisa dibuka kembali dengan open_edge()                  │")
+    print("│ • USE CASE: Simulasi kebakaran/jalur tertutup sementara  │")
+    print("│ • BUKAN operasi DELETE yang sesungguhnya                  │")
+    print("└────────────────────────────────────────────────────────────┘")
     
-    print("\n  2️⃣  remove_edge(asal, tujuan):")
-    print("     - BENAR-BENAR MENGHAPUS edge dari graph")
-    print("     - Edge TIDAK ADA lagi di graph")
-    print("     - Total edges BERKURANG")
-    print("     - TIDAK bisa dikembalikan")
-    print("     - USE CASE: Maintenance/perbaikan permanen")
+    print("\n┌─ remove_edge(asal, tujuan) ───────────────────────────────┐")
+    print("│ • BENAR-BENAR MENGHAPUS edge dari graph                   │")
+    print("│ • Edge TIDAK TERSIMPAN LAGI di graph                      │")
+    print("│ • Total edges BERKURANG                                   │")
+    print("│ • TIDAK bisa dikembalikan (permanent deletion)            │")
+    print("│ • USE CASE: Maintenance/perbaikan permanen               │")
+    print("│ • INI adalah operasi DELETE yang sesungguhnya            │")
+    print("└────────────────────────────────────────────────────────────┘")
     
     print("\n" + "-"*70)
-    print("DEMO PRAKTIS:")
+    print("DEMO PRAKTIKAL INTERAKTIF:")
     print("-"*70)
     
     # Pilih edge untuk demo
-    print("\n📍 Pilih edge untuk demonstrasi:")
-    asal = input("Node asal (contoh: C): ").strip().upper()
-    if asal not in system.graph.nodes:
-        print(f"❌ Node '{asal}' tidak ditemukan!")
+    print("\n📍 Pilih 2 edge untuk demonstrasi:")
+    print(f"   Daftar node: {', '.join(sorted(system.graph.nodes.keys()))}")
+    
+    # Untuk demo close_edge
+    print("\n📌 Edge 1 - Untuk demo close_edge():")
+    asal1 = input("   Node asal (contoh: C): ").strip().upper()
+    if asal1 not in system.graph.nodes:
+        print(f"   ❌ Node '{asal1}' tidak ditemukan!")
         return
     
-    neighbors = [e.tujuan for e in system.graph.get_neighbors(asal)]
-    if not neighbors:
-        print(f"❌ Node '{asal}' tidak punya tetangga!")
+    neighbors1 = [e.tujuan for e in system.graph.get_neighbors(asal1)]
+    if not neighbors1:
+        print(f"   ❌ Node '{asal1}' tidak punya tetangga!")
         return
     
-    print(f"   Tetangga {asal}: {neighbors}")
-    tujuan = input(f"Node tujuan: ").strip().upper()
-    if tujuan not in neighbors:
-        print(f"❌ Tidak ada edge antara {asal} dan {tujuan}!")
+    print(f"   Tetangga {asal1}: {neighbors1}")
+    tujuan1 = input("   Node tujuan: ").strip().upper()
+    if tujuan1 not in neighbors1:
+        print(f"   ❌ Tidak ada edge antara {asal1} dan {tujuan1}!")
         return
     
-    # Demo close_edge
-    print(f"\n✅ STEP 1: Menggunakan close_edge('{asal}', '{tujuan}')")
-    print(f"   Sebelum:")
-    print(f"   - Total edges: {system.graph.total_edges}")
-    edge_status_before = any(e.tujuan == tujuan for e in system.graph.get_neighbors(asal))
-    print(f"   - Edge {asal}→{tujuan} aktif: {edge_status_before}")
+    # Untuk demo remove_edge
+    print("\n📌 Edge 2 - Untuk demo remove_edge():")
+    asal2 = input("   Node asal (contoh: D): ").strip().upper()
+    if asal2 not in system.graph.nodes:
+        print(f"   ❌ Node '{asal2}' tidak ditemukan!")
+        return
     
-    system.graph.close_edge(asal, tujuan)
+    neighbors2 = [e.tujuan for e in system.graph.get_neighbors(asal2)]
+    if not neighbors2:
+        print(f"   ❌ Node '{asal2}' tidak punya tetangga!")
+        return
     
-    print(f"\n   Sesudah close_edge():")
-    print(f"   - Total edges: {system.graph.total_edges} (TIDAK BERUBAH ✗)")
-    edge = next((e for e in system.graph.get_neighbors(asal) if e.tujuan == tujuan), None)
-    if edge:
-        print(f"   - Edge {asal}→{tujuan} aktif: {edge.is_active} (hanya marking)")
-        print(f"   - Edge MASIH ADA, hanya ditandai sebagai tidak aktif")
+    print(f"   Tetangga {asal2}: {neighbors2}")
+    tujuan2 = input("   Node tujuan: ").strip().upper()
+    if tujuan2 not in neighbors2:
+        print(f"   ❌ Tidak ada edge antara {asal2} dan {tujuan2}!")
+        return
     
-    # Demo open kembali
-    print(f"\n✅ STEP 2: Membuka kembali dengan open_edge('{asal}', '{tujuan}')")
-    system.graph.open_edge(asal, tujuan)
-    edge = next((e for e in system.graph.get_neighbors(asal) if e.tujuan == tujuan), None)
-    print(f"   - Edge {asal}→{tujuan} aktif sekarang: {edge.is_active} ✓")
+    # ===== DEMO CLOSE_EDGE =====
+    print("\n" + "="*70)
+    print("STEP 1: DEMO close_edge() - HANYA MARKING (BUKAN DELETE)")
+    print("="*70)
+    
+    print(f"\n📊 Sebelum close_edge('{asal1}', '{tujuan1}'):")
+    print(f"   Total edges: {system.graph.total_edges}")
+    edge1 = next((e for e in system.graph.get_neighbors(asal1) if e.tujuan == tujuan1), None)
+    print(f"   Edge {asal1}→{tujuan1} aktif: {edge1.is_active if edge1 else 'N/A'}")
+    
+    print(f"\n📝 Memanggil: graph.close_edge('{asal1}', '{tujuan1}')")
+    system.graph.close_edge(asal1, tujuan1)
+    
+    print(f"\n📊 Sesudah close_edge():")
+    print(f"   Total edges: {system.graph.total_edges} ← TIDAK BERUBAH ✗")
+    edge1 = next((e for e in system.graph.get_neighbors(asal1) if e.tujuan == tujuan1), None)
+    print(f"   Edge {asal1}→{tujuan1} aktif: {edge1.is_active if edge1 else 'N/A'} ← Hanya marking")
+    print(f"   ✓ Edge MASIH ADA di graph (hanya ditandai tidak aktif)")
+    
+    print(f"\n   Apa yang terjadi:")
+    print(f"   - is_active = False (marking saja)")
+    print(f"   - get_weight() return infinity (tidak bisa dilalui Dijkstra)")
+    print(f"   - Tapi edge masih tersimpan di adjacency list")
+    
+    # ===== DEMO REMOVE_EDGE =====
+    print("\n" + "="*70)
+    print("STEP 2: DEMO remove_edge() - BENAR-BENAR DELETE")
+    print("="*70)
+    
+    print(f"\n📊 Sebelum remove_edge('{asal2}', '{tujuan2}'):")
+    print(f"   Total edges: {system.graph.total_edges}")
+    neighbors2_before = [e.tujuan for e in system.graph.get_neighbors(asal2)]
+    print(f"   Neighbors {asal2}: {neighbors2_before}")
+    
+    print(f"\n📝 Memanggil: graph.remove_edge('{asal2}', '{tujuan2}')")
+    print(f"   Operasi: BENAR-BENAR HAPUS edge dari adjacency list")
+    system.graph.remove_edge(asal2, tujuan2)
+    
+    print(f"\n📊 Sesudah remove_edge():")
+    print(f"   Total edges: {system.graph.total_edges} ← BERKURANG 1 ✓")
+    neighbors2_after = [e.tujuan for e in system.graph.get_neighbors(asal2)]
+    print(f"   Neighbors {asal2}: {neighbors2_after} ← {tujuan2} hilang!")
+    print(f"   ✓ Edge TIDAK ADA LAGI di graph (benar-benar dihapus)")
+    
+    print(f"\n   Apa yang terjadi:")
+    print(f"   - Edge dihapus dari adjacency_list[{asal2}]")
+    print(f"   - Edge dihapus dari adjacency_list[{tujuan2}]")
+    print(f"   - total_edges berkurang")
+    print(f"   - Tidak bisa dikembalikan")
+    
+    # ===== RINGKASAN =====
+    print("\n" + "="*70)
+    print("RINGKASAN PERBANDINGAN")
+    print("="*70)
+    print(f"\n{'Aspek':<20} {'close_edge()':<25} {'remove_edge()':<25}")
+    print("-"*70)
+    print(f"{'Menghapus data':<20} {'Tidak (hanya marking)':<25} {'Ya (permanen) ✓':<25}")
+    print(f"{'Total edges berubah':<20} {'Tidak':<25} {'Ya ✓':<25}")
+    print(f"{'Bisa dipulihkan':<20} {'Ya (open_edge)':<25} {'Tidak':<25}")
+    print(f"{'Operasi DELETE':<20} {'Bukan':<25} {'Ya ✓':<25}")
+    print(f"{'Struktur data':<20} {'Tetap utuh':<25} {'Berubah ✓':<25}")
+    print("-"*70)
+    
+    print(f"\n✅ KESIMPULAN:")
+    print(f"   • close_edge() = Simulasi saja (marking status)")
+    print(f"   • remove_edge() = Operasi DELETE yang sesungguhnya")
+    print(f"   • Untuk projek ini, close_edge() cocok untuk simulasi kebakaran")
+    print(f"   • remove_edge() cocok untuk maintenance/perbaikan struktur graph")
     
     input("\nTekan Enter untuk lanjut...")
 
