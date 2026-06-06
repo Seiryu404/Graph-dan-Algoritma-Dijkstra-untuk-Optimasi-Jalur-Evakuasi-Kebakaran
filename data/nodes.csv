@@ -1,0 +1,26 @@
+id,nama_node,kategori
+A,Persimpangan Jl. Kapas,Jalan Utama
+B,Persimpangan Jl. Kenjeran,Jalan Utama
+C,Persimpangan Gang 1,Persimpangan
+D,Persimpangan Gang 2,Persimpangan
+E,Persimpangan Gang 3,Persimpangan
+F,Pos RW Kapasari,Fasilitas Umum
+G,Persimpangan Gang 4,Persimpangan
+H,Persimpangan Gang 5,Persimpangan
+I,Mushola Al-Ikhlas,Fasilitas Umum
+J,Persimpangan Gang 6,Persimpangan
+K,Toko Serba Ada,Persimpangan
+L,Persimpangan Gang 7,Persimpangan
+M,Persimpangan Gang 8,Persimpangan
+N,Persimpangan Gang 9,Persimpangan
+O,Lapangan Kecil,Fasilitas Umum
+P,Pos Kesehatan,Fasilitas Umum
+Q,Persimpangan Gang 10,Persimpangan
+R,Persimpangan Gang 11,Persimpangan
+S,Persimpangan Gang 12,Persimpangan
+T,Lapangan Utama Simolawang,Titik Evakuasi
+U,Lapangan Parkir Jalan Kenjeran,Titik Evakuasi
+V,Sekolah Dasar Negeri 1,Titik Evakuasi
+W,Jalan Lontar,Jalan Utama
+X,Jalan Sidoresmo,Jalan Utama
+Y,Hub Transportasi,Jalan Utama
